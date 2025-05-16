@@ -1,0 +1,42 @@
+
+<div class="box">
+  <div class="navigate">
+    <div
+      *ngFor="let answer of curentAnswers; let i = index"
+      [ngClass]="curentAnswers[i] != null ? 'attempted' : ''"
+      (click)="setCurrentQuestion(i)"
+    >
+      {{ i + 1 }}
+    </div>
+  </div>
+  
+  <div class="timer">{{ timerDisplay }}</div>
+  <span class="curr">{{ questionNo+1 }} / {{numberQuestion}}</span>
+
+  <h1 class="question">{{ currentQuestion?.text }}</h1>
+  <ul class="options">
+    <li
+      *ngFor="let option of currentQuestion?.answers; let i = index"    
+      [ngClass]="iCheckAnwser == true && option.correctAnser == true? 'checkAnswer' : ''"
+      >
+   <input type="radio" name="answer" 
+    [checked]="i == curentAnswers[questionNo]"
+    [value]="option.answerId"
+    (click)="setAnswer(questionNo, i ,option.answerId, currentQuestion?.questionId)">
+    {{option?.text}}  
+ </li>
+   </ul>
+  <div class="buttons">
+    <button (click)="prevQue()" [ngClass]="questionNo == 0 ? 'disable' : ''">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <button (click)="checkAnswers(currentQuestion?.questionId)"><i class="fa-solid fa-circle-check"></i></button>
+    <button (click)="nextQue()" [ngClass]="this.questionNo+1 >= questions?.length ? 'disable' : ''">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="buttons" *ngIf="quizAnswers.length >= numberQuestion">
+    <div (click)="submit()" class="submit">Submit Quiz</div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+
+<div class="data">
+    <div>
+        <span>Correct/Total</span>
+        <span>{{ correctCount }}/{{totalQuestions  }}</span>
+    </div>
+    <div>
+        <span>Timer</span>
+        <span><span>{{timerDisplay}}</span></span>
+    </div>
+    <div>
+        <span>Result</span>
+        <span *ngIf="isPass" style="color: chartreuse;">Pass</span>
+        <span *ngIf="!isPass" style="color: brown;" >Fail</span>
+    </div>
+</div>
+<div class="questions">
+    <div *ngFor="let item of userAnswers; let i = index">
+
+        <p style="font-weight: bold;">Question {{i +1}}: {{item.questionText}} </p>
+        <div *ngIf="item.isCorrect" class="correct">
+            <p class="correct">Your Anser: {{item.textAnswer}} </p>
+        </div>
+        <div *ngIf="!item.isCorrect">
+            <p class="wrong">Your Anser: {{item.textUser}} </p>
+            <br>
+            <p class="correct">Anser: {{item.textAnswer}} </p>
+        </div>
+    </div>
+
+</div>
+<button (click)="reload()" class="btn-start">Restart</button>
