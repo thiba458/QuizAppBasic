@@ -66,10 +66,7 @@ namespace APIQuizApp.Controllers
                     ).OrderBy(m =>m.QuestionId).ToListAsync();
                 // Lấy tất cả câu hỏi
                 var questions = await _context.Question
-                    .Select(a => new
-                    {   a.QuestionId,
-                        a.Text
-                    }).ToListAsync();
+                    .ToListAsync();
 
                 // so sánh đáp án.
                 foreach (var item in quiz_Answer)
@@ -84,6 +81,7 @@ namespace APIQuizApp.Controllers
                             SelectedAnswer = item.AnswerId,
                             QuestionAnswer = correctAnswer.AnswerId,
                             TextAnswer = correctAnswer.Text,
+                            Explain = questions.Where(m => m.QuestionId == item.QuestionId).Select(m => m.Explain).FirstOrDefault(),
                             IsCorrect = true
                         });
                         correctCount++;
@@ -97,6 +95,7 @@ namespace APIQuizApp.Controllers
                             SelectedAnswer = item.AnswerId,
                             TextUser   = correctAnswers?.Where(m => m.AnswerId == item.AnswerId).Select(m => m.Text).FirstOrDefault() ?? "Không tìm thấy",
                             TextAnswer = correctAnswer?.Text ?? "Không tìm thấy",
+                            Explain = questions.Where(m => m.QuestionId == item.QuestionId).Select(m => m.Explain).FirstOrDefault(),
                             IsCorrect = false
                         });
                     }
@@ -124,6 +123,7 @@ namespace APIQuizApp.Controllers
                           {
                               q.QuestionId,
                               q.Text,
+                              q.Explain,
                               Answers = _context.Answer
                               .Where(m => m.QuestionId == id)
                               .Select(m => new

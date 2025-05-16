@@ -11,5 +11,6 @@ export interface UserAnswer {
   selectedAnswer?:number,
   textAnswer? : string,
   textUser? : string
+  explain?: string
 
 }

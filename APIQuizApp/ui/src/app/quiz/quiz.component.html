@@ -25,7 +25,13 @@
     (click)="setAnswer(questionNo, i ,option.answerId, currentQuestion?.questionId)">
     {{option?.text}}  
  </li>
+ 
    </ul>
+   <div *ngIf="iCheckAnwser == true"> 
+     <p style="font-weight: bold; color: brown;"> Explain the answer: </p>
+<p>{{ currentQuestion?.explain }} </p>
+
+   </div>
   <div class="buttons">
     <button (click)="prevQue()" [ngClass]="questionNo == 0 ? 'disable' : ''">
       <i class="fa-solid fa-arrow-left"></i>

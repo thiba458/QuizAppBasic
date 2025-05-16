@@ -92,11 +92,9 @@ export class QuizComponent {
   }
 
   checkAnswers(questionId: any) {
-    console.log(this.currentQuestion)
     this.QuestionService.checkAnswerByQuestionId(questionId).subscribe(
       (data) => {
         this.currentQuestion = data[0];
-        console.log(data[0]);
         this.iCheckAnwser = true;
       },
       err => console.log(err)

@@ -16,7 +16,7 @@ namespace APIQuizApp.Models
     {
         public int QuestionId { get; set; }
         public string? QuestionText { get; set; }
-
+        public string? Explain { get; set; }
         public int SelectedAnswer { get; set; }
         public int QuestionAnswer { get; set; }
         public bool IsCorrect { get; set; }

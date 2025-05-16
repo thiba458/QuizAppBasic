@@ -25,7 +25,7 @@ export class QuestionService {
   setAnswer(answer: any) {
     this.quizAnswers.push({ ...answer })
   }
-  // 2. send answer to server
+  // 2. send answers to server
   postAnswer(): Observable<any> {
     return this.http.post<any>(this.baseApi + "Questions", this.quizAnswers)
   }
