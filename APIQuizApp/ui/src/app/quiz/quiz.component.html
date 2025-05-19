@@ -5,8 +5,8 @@
       *ngFor="let answer of curentAnswers; let i = index"
       [ngClass]="curentAnswers[i] != null ? 'attempted' : ''"
       (click)="setCurrentQuestion(i)"
-    >
-      {{ i + 1 }}
+    > {{ i + 1 }}
+      
     </div>
   </div>
   
