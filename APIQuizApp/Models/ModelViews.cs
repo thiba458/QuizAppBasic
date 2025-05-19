@@ -27,6 +27,6 @@ namespace APIQuizApp.Models
     {
         public int TotalQuestions { get; set; }
         public int CorrectCount { get; set; }
-        public List<UserAnswers> Details { get; set; }
+        public List<UserAnswers>? Details { get; set; }
     }
 }
