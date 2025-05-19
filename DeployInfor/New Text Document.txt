@@ -1,0 +1,5 @@
+API: http://54.169.230.176:7275/api/questions
+Link: http://54.169.230.176/
+
+IP server maybe changed
+UI: get from git.

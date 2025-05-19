@@ -23,11 +23,9 @@ export class ResultComponent {
   constructor(private QuestionsService: QuestionService) { }
   ngOnInit() {
     this.result = this.QuestionsService.result
-    console.log(this.userAnswers)
-    this.correctCount = this.result.correctCount
-    this.totalQuestions = this.result.totalQuestions
-    this.userAnswers = this.result.details
-    console.log(this.userAnswers)
+    this.correctCount = this.result.correctCount;
+    this.totalQuestions = this.result.totalQuestions;
+    this.userAnswers = this.result.details;
     if(this.correctCount/this.result.totalQuestions*100 > 80){
     this.isPass = true;
     }
