@@ -40,7 +40,7 @@ export class QuestionService {
   }
   // 2. send answers to server
   postAnswer(): Observable<any> {
-    return this.http.post<any>("http://54.169.230.176:7275/api/Questions", this.quizAnswers)
+    return this.http.post<any>(this.baseApi + "Questions", this.quizAnswers)
   }
   // 3. Check Answer
   checkAnswerByQuestionId(questionId: number): Observable<any> {
